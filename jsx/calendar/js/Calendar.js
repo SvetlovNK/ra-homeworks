@@ -1,3 +1,65 @@
+const getPreviousMonth = (currentDate) => {
+  const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth());
+  newDate.setMonth(newDate.getMonth() - 1);
+
+  return newDate;
+};
+
+const getPreviousMonthDays = (date, prevMonth) => {
+  const firstDayOfCurrentMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+  const weekDay = firstDayOfCurrentMonth.getDay();
+  const counter = weekDay === 0 ? 6 : weekDay - 1;
+  const lastDayOfPrevMonth = new Date(prevMonth.getFullYear(), prevMonth.getMonth() + 1, 0);
+  const preparedLastDay = lastDayOfPrevMonth.getDate();
+
+  return collectReverseDays(counter, preparedLastDay);
+};
+
+const getCurrentMonthDays = (date) => {
+  const lastDayOfCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  const lastDay = lastDayOfCurrentMonth.getDate();
+
+  return collectDays(lastDay);
+};
+
+const collectDays = (counter, prevDay = 1, list = []) => {
+  if (counter > 0) {
+    list.push(prevDay);
+    return collectDays(counter - 1, prevDay + 1, list);
+  }
+
+  return list;
+};
+
+const collectReverseDays = (counter, prevDay, list = []) => {
+  if (counter > 0) {
+    list.push(prevDay);
+    return collectReverseDays(counter - 1, prevDay - 1, list);
+  }
+
+  return list.reverse();
+};
+
+const getweeks = (days) => {
+  const daysInWeek = 7;
+  let weeks = [];
+
+  for (let i = 0; i < days.length; i += daysInWeek) {
+    const week = days.slice(i, i + daysInWeek);
+    weeks = [...weeks, week]
+  }
+
+  return weeks;
+};
+
+const getNextMonthDays = (date) => {
+  const lastDayOfCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  const weekDay = lastDayOfCurrentMonth.getDay();
+  const counter = weekDay === 0 ? weekDay : 7 - weekDay;
+
+  return collectDays(counter);
+};
+
 const Calendar = (props) => {
   const {date} = props;
   const currentYear = date.getFullYear();
@@ -52,78 +114,9 @@ const Calendar = (props) => {
         </tr>
         </thead>
         <tbody>
-        {weeks.map((week, i) => {
-          console.log(week);
-          return <Week days={week} currentDay={currentDay} isFirstWeek={i === 0} />
-        })}
+        {weeks.map((week, i) => <Week days={week} currentDay={currentDay} isFirstWeek={i === 0}/>)}
         </tbody>
       </table>
     </div>
   )
 };
-
-function getPreviousMonth(currentDate) {
-  const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth());
-  newDate.setMonth(newDate.getMonth() - 1);
-
-  return newDate;
-}
-
-function getPreviousMonthDays(date, prevMonth) {
-  const firstDayOfCurrentMonth = new Date(date.getFullYear(), date.getMonth(), 1);
-  const weekDay = firstDayOfCurrentMonth.getDay();
-  const counter = weekDay === 0 ? 6 : weekDay - 1;
-  const lastDayOfPrevMonth = new Date(prevMonth.getFullYear(), prevMonth.getMonth() + 1, 0);
-  const preparedLastDay = lastDayOfPrevMonth.getDate();
-
-  return collectReverseDays(counter, preparedLastDay);
-}
-
-function getCurrentMonthDays(date) {
-  const lastDayOfCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-  const lastDay = lastDayOfCurrentMonth.getDate();
-
-  return collectDays(lastDay);
-}
-
-function getNextMonthDays(date) {
-  const lastDayOfCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-  const weekDay = lastDayOfCurrentMonth.getDay();
-  const counter = weekDay === 0 ? weekDay : 7 - weekDay;
-
-  return collectDays(counter);
-}
-
-function collectReverseDays(counter, prevDay, list = []) {
-  if (counter > 0) {
-    list.push(prevDay);
-    return collectReverseDays(counter - 1, prevDay - 1, list);
-  }
-
-  return list.reverse();
-}
-
-function collectDays(counter, prevDay = 1, list = []) {
-  if (counter > 0) {
-    list.push(prevDay);
-    return collectDays(counter - 1, prevDay + 1, list);
-  }
-
-  return list;
-}
-
-function capitalizeString(string) {
-  return string[0].toUpperCase() + string.slice(1);
-}
-
-function getweeks(days) {
-  const daysInWeek = 7;
-  let weeks = [];
-
-  for (let i = 0; i < days.length; i += daysInWeek) {
-    const week = days.slice(i, i + daysInWeek);
-    weeks = [...weeks, week]
-  }
-
-  return weeks;
-}
