@@ -7,6 +7,7 @@ const Calendar = (props) => {
   const currentMonthDaysList = getCurrentMonthDays(date);
   const nextMonthDaysList = getNextMonthDays(date);
   const dayList = [...prevMonthDaysList, ...currentMonthDaysList, ...nextMonthDaysList];
+  const weeks = getweeks(dayList);
 
   // text strings
   const dayString = capitalizeString(date.toLocaleString('ru-ru', {weekday: 'long'}));
@@ -51,7 +52,10 @@ const Calendar = (props) => {
         </tr>
         </thead>
         <tbody>
-        {getRows(dayList, currentDay)}
+        {weeks.map((week, i) => {
+          console.log(week);
+          return <Week days={week} currentDay={currentDay} isFirstWeek={i === 0} />
+        })}
         </tbody>
       </table>
     </div>
@@ -112,35 +116,14 @@ function capitalizeString(string) {
   return string[0].toUpperCase() + string.slice(1);
 }
 
-function getRows(days, currentDay, rows = [], isFirstRow = true) {
-  if (days.length > 0) {
-    const daysList = [...days];
-    const splicedDaysList = daysList.splice(7);
-    rows.push(<Row days={daysList} currentDay={currentDay} isFirstRow={isFirstRow}/>);
+function getweeks(days) {
+  const daysInWeek = 7;
+  let weeks = [];
 
-    return getRows(splicedDaysList, currentDay, rows, false);
+  for (let i = 0; i < days.length; i += daysInWeek) {
+    const week = days.slice(i, i + daysInWeek);
+    weeks = [...weeks, week]
   }
 
-  return rows;
-}
-
-function Row(props) {
-  const {days, isFirstRow, currentDay} = props;
-  const firstDay = days[0];
-
-  return (
-    <tr>
-      {days.map(day => {
-        let cellClass;
-
-        if (isFirstRow && day > 7 || !isFirstRow && day < firstDay) {
-          cellClass = 'ui-datepicker-other-month';
-        } else if (day === currentDay) {
-          cellClass = 'ui-datepicker-today';
-        }
-
-        return <td className={cellClass}>{day}</td>;
-      })}
-    </tr>
-  )
+  return weeks;
 }
