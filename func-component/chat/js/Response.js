@@ -1,6 +1,7 @@
 'use strict';
 
 function Response({ from, message }) {
+
   return (
     <li className="clearfix">
       <div className="message-data align-right">

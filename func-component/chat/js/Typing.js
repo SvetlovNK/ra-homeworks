@@ -1,6 +1,7 @@
 'use strict';
 
 function Typing({ from, message }) {
+
   return (
     <li>
       <div className="message-data">
