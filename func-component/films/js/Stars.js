@@ -1,9 +1,13 @@
 'use strict';
 
-function getStarsList(counter = 0, list = []) {
-  if (counter > 0) {
+function getStarsList(counter = 0,) {
+  const list = [];
+
+  if (counter > 5 || !isNumber(counter)) return list;
+
+  while (counter) {
     list.push(<Star/>);
-    return getStarsList(counter - 1, list);
+    counter -= 1;
   }
 
   return list;
@@ -12,7 +16,14 @@ function getStarsList(counter = 0, list = []) {
 function Stars({count}) {
   const starList = getStarsList(count);
 
-  return <ul className="card-body-stars u-clearfix">{starList.map(star => <li>{star}</li>)}</ul>;
+  return (
+    <div>
+      {starList ?
+        <ul className="card-body-stars u-clearfix">{starList.map((star, i) => <li key={i}>{star}</li>)}</ul> :
+        null
+      }
+    </div>
+  );
 }
 
 Stars.defaultProps = {
