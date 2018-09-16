@@ -16,9 +16,20 @@ const FeedbackForm = ({data, onSubmit}) => {
     },
   ];
 
-  const SUBJECT_TYPES = [
+  const SUBJECT_LIST = [
     'У меня проблема',
     'У меня важный вопрос'
+  ];
+
+  const SNACK_LIST = [
+    {
+      id: 'пицца',
+      value: 'Пиццу'
+    },
+    {
+      id: 'пирог',
+      value: 'Пирог'
+    }
   ];
 
   const {salutation, name, subject, message, email, snacks} = data;
@@ -29,26 +40,14 @@ const FeedbackForm = ({data, onSubmit}) => {
         <p>Чем мы можем помочь?</p>
       </div>
 
-      <SalutionList types={SALUTION_TYPES} defaultSalution={salutation} />
+      <SalutionList types={SALUTION_TYPES} defaultSalution={salutation}/>
       <Name name={name}/>
       <Email email={email}/>
-      <Subject subjectList={SUBJECT_TYPES} defaultSubject={subject}/>
+      <Subject subjectList={SUBJECT_LIST} defaultSubject={subject}/>
+      <Message defaultMessage={message}/>
+      <Snacks snackList={SNACK_LIST} defaultSnacks={snacks} />
 
-      <div className="contact-form__input-group">
-        <label className="contact-form__label" htmlFor="message">Ваше сообщение</label>
-        <textarea className="contact-form__input contact-form__input--textarea" id="message" name="message" rows="6"
-                  cols="65"></textarea>
-      </div>
-      <div className="contact-form__input-group">
-        <p className="contact-form__label--checkbox-group">Хочу получить:</p>
-        <input className="contact-form__input contact-form__input--checkbox" id="snacks-pizza" name="snacks"
-               type="checkbox" value="пицца"/>
-        <label className="contact-form__label contact-form__label--checkbox" htmlFor="snacks-pizza">Пиццу</label>
-        <input className="contact-form__input contact-form__input--checkbox" id="snacks-cake" name="snacks"
-               type="checkbox" value="пирог"/>
-        <label className="contact-form__label contact-form__label--checkbox" htmlFor="snacks-cake">Пирог</label>
-      </div>
-      <button className="contact-form__button" type="submit">Отправить сообщение!</button>
+      <button className="contact-form__button" onSubmit={onSubmit} type="submit">Отправить сообщение!</button>
       <output id="result"/>
     </form>
   )
