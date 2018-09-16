@@ -32,14 +32,14 @@ const FetchDataComponent = (WrappedComponent, url = '') => {
     }
 
     render() {
-      const {loading, loaded} = this.state;
+      const {data, loading, loaded} = this.state;
 
       return (
         <div className="fetch-data-component">
           {loading ?
             <div className="fetch-data-component__preloader">loading...</div> :
             loaded ?
-              <WrappedComponent />:
+              <WrappedComponent data={data}/>:
               <div className="fetch-data-component__preloader fetch-data-component__preloader--error">Error, try refreshing the page.</div>
           }
         </div>
