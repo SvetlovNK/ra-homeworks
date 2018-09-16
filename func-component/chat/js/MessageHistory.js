@@ -4,6 +4,11 @@ const MessageHistory = ({list = []}) => {
 
   const massageList = list.map(message => {
     const {id, from, type, time, text} = message;
+    const TYPES = {
+      responce: 'response',
+      messsage: 'message',
+      typing: 'typing'
+    };
 
     const props = {
       from,
@@ -14,9 +19,9 @@ const MessageHistory = ({list = []}) => {
     };
 
     switch(type) {
-      case 'response': return <Response key={id} {...props} />;
-      case 'message': return <Message key={id} {...props} />;
-      case 'typing': return <Typing key={id} {...props} />;
+      case TYPES.responce: return <Response key={id} {...props} />;
+      case TYPES.messsage: return <Message key={id} {...props} />;
+      case TYPES.typing: return <Typing key={id} {...props} />;
 
       default: return '';
     }
