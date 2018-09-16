@@ -1,8 +1,10 @@
 'use strict';
 
 const HexInput = props => {
-  function onChange() {
-    props.onChange(this.value);
+  function onChange(evt) {
+    const target = evt.target;
+
+    props.onChange(target.value);
   }
 
   return (
