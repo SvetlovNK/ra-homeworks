@@ -86,6 +86,10 @@ h1, h2 {
   padding: 0.5rem 1rem;
 }
 
+.contact-form__input-group--row {
+  display: flex;
+}
+
 .contact-form__label {
   display: block;
   color: #414643;
@@ -135,6 +139,15 @@ h1, h2 {
   margin-left: 16px;
   margin-left: 16px;
   margin-left: 1rem;
+}
+
+.contact-form__radio-wrapper {
+  margin-left: 1rem;
+  margin-top: 0;
+}
+
+.contact-form__radio-wrapper:first-child {
+  margin-left: 0;
 }
 
 .contact-form__input:focus, .contact-form__input:active {
