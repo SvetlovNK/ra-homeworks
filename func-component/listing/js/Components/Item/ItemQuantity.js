@@ -1,12 +1,12 @@
 const getQuantityMod = (count) => {
-  const QUANTITY_TYPES = {
+  const TYPES = {
     levelLow: 10,
     levelMedium: 20
   };
 
-  if(count <= QUANTITY_TYPES.levelLow) {
+  if(count <= TYPES.levelLow) {
     return 'level-low';
-  } else if (count <= QUANTITY_TYPES.levelMedium) {
+  } else if (count <= TYPES.levelMedium) {
     return 'level-medium'
   }
 
