@@ -1,5 +1,5 @@
 const Email = ({email}) => {
-  const labelTitle = 'Адрес электронной почты';
+  const labelName = 'Адрес электронной почты';
 
-  return <TextInput name="email" id="email" labelName={labelTitle} defaultValue={email} type="email"/>;
+  return <TextInput name="email" id="email" labelName={labelName} defaultValue={email} type="email"/>;
 }
