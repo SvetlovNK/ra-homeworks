@@ -1,4 +1,4 @@
-const Textarea = ({id, name, labelName = '', value = '', rows = 6, cols = 65}) => {
+const Textarea = ({id, name, labelName, value, rows, cols}) => {
 
   return (
     <div className="contact-form__input-group">
@@ -7,4 +7,12 @@ const Textarea = ({id, name, labelName = '', value = '', rows = 6, cols = 65}) =
                 defaultValue={value} rows={rows} cols={cols}/>
     </div>
   )
+};
+
+Textarea.defaultProps = {
+  type: 'text',
+  labelName: '',
+  value: '',
+  rows: 6,
+  cols: 65
 };

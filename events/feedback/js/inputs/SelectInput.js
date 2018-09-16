@@ -1,4 +1,4 @@
-const SelectInput = ({id, name, options = [], labelName = '', value = ''}) => {
+const SelectInput = ({id, name, options, labelName, value}) => {
   const optionsList = options.map((option, i) => <option key={i}>{option}</option>);
 
   return (
@@ -9,4 +9,10 @@ const SelectInput = ({id, name, options = [], labelName = '', value = ''}) => {
       </select>
     </div>
   )
+};
+
+SelectInput.defaultProps = {
+  options: [],
+  labelName: '',
+  value: ''
 };

@@ -1,4 +1,4 @@
-const SalutionList = ({types, defaultSalution}) => {
+const SalutionList = ({types = [], defaultSalution}) => {
   const salutionElements = types.map(({id, value}) => {
     const props = {
       id,

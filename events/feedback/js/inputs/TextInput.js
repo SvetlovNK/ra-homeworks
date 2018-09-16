@@ -1,4 +1,4 @@
-const TextInput = ({id, name, type = 'text', labelName = '', defaultValue}) => {
+const TextInput = ({id, name, type, labelName, defaultValue}) => {
 
   return (
     <div className="contact-form__input-group">
@@ -7,4 +7,10 @@ const TextInput = ({id, name, type = 'text', labelName = '', defaultValue}) => {
              type={type}/>
     </div>
   )
+};
+
+TextInput.defaultProps = {
+  type: 'text',
+  labelName: '',
+  defaultValue: ''
 };
