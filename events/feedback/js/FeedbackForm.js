@@ -16,6 +16,11 @@ const FeedbackForm = ({data, onSubmit}) => {
     },
   ];
 
+  const SUBJECT_TYPES = [
+    'У меня проблема',
+    'У меня важный вопрос'
+  ];
+
   const {salutation, name, subject, message, email, snacks} = data;
 
   return (
@@ -27,14 +32,7 @@ const FeedbackForm = ({data, onSubmit}) => {
       <SalutionList types={SALUTION_TYPES} defaultSalution={salutation} />
       <Name name={name}/>
       <Email email={email}/>
-
-      <div className="contact-form__input-group">
-        <label className="contact-form__label" htmlFor="subject">Чем мы можем помочь?</label>
-        <select className="contact-form__input contact-form__input--select" id="subject" name="subject">
-          <option>У меня проблема</option>
-          <option>У меня важный вопрос</option>
-        </select>
-      </div>
+      <Subject subjectList={SUBJECT_TYPES} defaultSubject={subject}/>
 
       <div className="contact-form__input-group">
         <label className="contact-form__label" htmlFor="message">Ваше сообщение</label>
