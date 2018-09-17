@@ -2,7 +2,7 @@ const Email = ({onInputChange}) => {
   const handleChange = (evt) => {
     const target = evt.target;
     const value = target.value;
-    const validatedEmail = preventEmailChars(value);
+    const validatedEmail = validateEmail(value);
 
     target.value = validatedEmail;
     onInputChange(target);
