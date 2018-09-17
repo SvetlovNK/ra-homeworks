@@ -1,16 +1,19 @@
-const Email = () => {
-  const props = {
-    type: 'email',
-    placeholder: 'Электронная почта'
-  };
-
+const Email = ({onInputChange}) => {
   const handleChange = (evt) => {
     const target = evt.target;
     const value = target.value;
     const validatedEmail = preventEmailChars(value);
 
     target.value = validatedEmail;
+    onInputChange(target);
   };
 
-  return <Input {...props} handleChange={handleChange}/>
+  const props = {
+    type: 'email',
+    name: 'email',
+    placeholder: 'Электронная почта',
+    handleChange
+  };
+
+  return <Input {...props}/>
 };
