@@ -2,7 +2,7 @@ const Password = ({onInputChange}) => {
   const handleChange = (evt) => {
     const target = evt.target;
     const value = target.value;
-    const validatedValue = validatePassword(value);
+    const validatedValue = validate(value, 'password');
 
     target.value = validatedValue;
     onInputChange(target);

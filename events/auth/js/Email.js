@@ -2,7 +2,7 @@ const Email = ({onInputChange}) => {
   const handleChange = (evt) => {
     const target = evt.target;
     const value = target.value;
-    const validatedEmail = validateEmail(value);
+    const validatedEmail = validate(value, 'email');
 
     target.value = validatedEmail;
     onInputChange(target);
