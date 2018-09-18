@@ -1,6 +1,6 @@
 const validate = (string, typeName) => {
   const VALIDATE_TYPES = {
-    password: /[\\W]/gi,
+    password: /[\W]/gi,
     email: /[^\w/@.-]/gi
   };
 
