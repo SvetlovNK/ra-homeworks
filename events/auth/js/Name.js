@@ -1,8 +1,6 @@
 const Name = ({onInputChange}) => {
   const handleChange = (evt) => {
     const target = evt.target;
-    const value = target.value;
-
     onInputChange(target);
   };
 
