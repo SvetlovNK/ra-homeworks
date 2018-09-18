@@ -1,5 +1,7 @@
 'use strict';
 
+const AUTH_URL = '/404/auth/';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Modal isHidden={!this.state.isUnauthorized}>
-          <AuthForm onAuth={this.auth.bind(this)} />
+          <AuthForm onAuth={this.auth.bind(this)} actionUrl={AUTH_URL}/>
         </Modal>
         <ModalResult isHidden={this.state.isUnauthorized}>
           <div className="ModalForm">
