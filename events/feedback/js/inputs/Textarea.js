@@ -1,5 +1,4 @@
 const Textarea = ({elementRef, id, name, labelName, value, rows, cols}) => {
-
   return (
     <div className="contact-form__input-group">
       <label className="contact-form__label" htmlFor={id}>{labelName}</label>
