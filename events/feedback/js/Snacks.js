@@ -1,19 +1,12 @@
-const Snacks = ({snackList = [], defaultSnacks}) => {
-  const snacksInputs = snackList.map(({id, value}) => {
-    const props = {
-      id,
-      value,
-      name: 'snack',
-      checked: defaultSnacks.includes(id)
-    };
-
-    return <CheckboxInput key={id} {...props}/>
-  });
+const Snacks = ({elementRef, snackList = [], defaultSnacks}) => {
 
   return (
-    <div className="contact-form__input-group">
+    <div ref={elementRef} className="contact-form__input-group">
       <p className="contact-form__label--checkbox-group">Хочу получить:</p>
-      {snacksInputs}
+
+      {snackList.map(({id, value}) => {
+        return <CheckboxInput key={id} id={id} name={'snack'} value={value} checked={defaultSnacks.includes(id)}/>
+      })}
     </div>
   );
-}
+};
