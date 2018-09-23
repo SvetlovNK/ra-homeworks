@@ -3,7 +3,7 @@ const Legend = ({labels, colors}) => {
     <div className="Legend">
       {labels.map((label, labelIndex) => {
         return (
-          <div>
+          <div key={labelIndex}>
             <span className="Legend--color" style={{backgroundColor: colors[labelIndex % colors.length]}}/>
             <span className="Legend--label">{label}</span>
           </div>
