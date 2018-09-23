@@ -33,6 +33,14 @@ class ChartsList extends React.Component {
           <ChartsColumnsView/>
         </Charts>
 
+        <Charts data={data} colors={colors} labels={labels} max={max}>
+          <ChartsColumnsView/>
+        </Charts>
+
+        <Charts data={data} colors={colors} labels={labels} max={max}>
+          <ChartsColumnsView/>
+        </Charts>
+
         <Legend labels={labels} colors={colors}/>
       </section>
     );
