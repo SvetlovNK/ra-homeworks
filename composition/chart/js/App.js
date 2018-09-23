@@ -1,11 +1,3 @@
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-function compareNumbers(a, b) {
-  return a - b;
-}
-
 class App extends React.Component {
 	componentWillMount() {
 		this.setState({
