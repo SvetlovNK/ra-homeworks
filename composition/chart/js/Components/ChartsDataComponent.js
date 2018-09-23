@@ -1,16 +1,23 @@
-const Charts = (props) => {
-  const {data, ...sprededProps} = props;
+const ChartsDataComponent = (WrappedComponent, horizontal = false) => {
+  return function (props) {
+    const {data, ...sprededProps} = props;
 
-  return (
-    <div className="Charts">
-      {data.map((serie, serieIndex) => {
-        const sortedSerie = serie.slice(0);
-        const sum = serie.reduce((carry, current) => carry + current, 0);
+    return (
+      <div className={"Charts " + (horizontal ? 'horizontal' : '')}>
+        {data.map((serie, serieIndex) => {
+          const sortedSerie = serie.slice(0);
+          const sum = serie.reduce((carry, current) => carry + current, 0);
+          const componentProps = {
+            sortedSerie: sortedSerie.sort(compareNumbers),
+            serie,
+            serieIndex,
+            sum,
+            ...sprededProps
+          };
 
-        sortedSerie.sort(compareNumbers);
-
-        return React.cloneElement(props.children, {serie, serieIndex, ...sprededProps});
-      })}
-    </div>
-  );
+          return <WrappedComponent key={serieIndex} {...componentProps} />
+        })}
+      </div>
+    );
+  }
 };

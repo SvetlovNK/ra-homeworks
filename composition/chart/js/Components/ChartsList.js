@@ -1,3 +1,8 @@
+const ColumnCharts = ChartsDataComponent(ChartsColumnsView,);
+const StackedCharts = ChartsDataComponent(ChartsStackedView);
+const LayeredCharts = ChartsDataComponent(ChartsLayeredView);
+const HorizontalCharts = ChartsDataComponent(CharstHorizontalView, true);
+
 class ChartsList extends React.Component {
   componentWillMount() {
     this.setState({
@@ -26,20 +31,20 @@ class ChartsList extends React.Component {
   render() {
     const {data, colors, labels, series} = this.state;
     const max = data.reduce((max, serie) => Math.max(max, serie.reduce((serieMax, item) => Math.max(serieMax, item), 0)), 0);
+    const chartsProps = {
+      data,
+      colors,
+      labels,
+      series,
+      max
+    };
 
     return (
       <section>
-        <Charts data={data} colors={colors} labels={labels} max={max}>
-          <ChartsColumnsView/>
-        </Charts>
-
-        <Charts data={data} colors={colors} labels={labels} max={max}>
-          <ChartsColumnsView/>
-        </Charts>
-
-        <Charts data={data} colors={colors} labels={labels} max={max}>
-          <ChartsColumnsView/>
-        </Charts>
+        <ColumnCharts {...chartsProps}/>
+        <StackedCharts {...chartsProps}/>
+        <LayeredCharts {...chartsProps}/>
+        <HorizontalCharts {...chartsProps}/>
 
         <Legend labels={labels} colors={colors}/>
       </section>
