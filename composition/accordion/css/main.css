@@ -42,6 +42,7 @@ h2, h3 {
 }
 .section button {
   position: absolute;
+  top: 50%;
   right: 0;
   margin: 0;
   padding: 0;
@@ -50,6 +51,7 @@ h2, h3 {
   outline: 0;
   border: 0;
   background: none;
+  transform: translateY(-50%);
   text-indent: -9999%;
   pointer-events: none;
 }
@@ -101,6 +103,7 @@ h2, h3 {
 }
 
 .sectionhead {
+  position: relative;
   width: 100%;
   overflow: hidden;
   background: white;
