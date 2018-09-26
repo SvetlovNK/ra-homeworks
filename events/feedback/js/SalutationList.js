@@ -1,9 +1,19 @@
-const SalutationList = ({elementRef, types = [], defaultSalutation}) => {
+const SalutationList = ({types = [], defaultSalutation}) => {
   return (
-    <div ref={elementRef} className="contact-form__input-group contact-form__input-group--row">
+    <div className="contact-form__input-group contact-form__input-group--row">
       {types.map(({id, value}) => {
-        return <RadioInput key={id} id={id} name='salutation' value={value} checked={defaultSalutation === value}/>
+        return (
+          <div key={id} className="contact-form__radio-wrapper">
+            <input className="contact-form__input contact-form__input--radio"
+                   id={id}
+                   name="salutation"
+                   type="radio"
+                   value={value}
+                   defaultChecked={defaultSalutation === value}/>
+            <label className="contact-form__label contact-form__label--radio" htmlFor={id}>{value}</label>
+          </div>
+        );
       })}
     </div>
-  )
+  );
 };

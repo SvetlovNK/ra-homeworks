@@ -1,8 +1,6 @@
 'use strict';
 
 const FeedbackForm = ({data, onSubmit}) => {
-  const {salutation, name, subject, message, email, snacks} = data;
-
   const SALUTION_TYPES = [
     {
       id: 'salutation-mr',
@@ -25,62 +23,44 @@ const FeedbackForm = ({data, onSubmit}) => {
 
   const SNACK_LIST = [
     {
-      id: 'пицца',
-      value: 'Пиццу'
+      id: 'snacks-pizza',
+      text: 'Пиццу',
+      value: 'пицца'
     },
     {
-      id: 'пирог',
-      value: 'Пирог'
+      id: 'snacks-cake',
+      text: 'Пирог',
+      value: 'пирог'
     }
   ];
 
-  const inputs = {
-    salutation: undefined,
-    name: undefined,
-    email: undefined,
-    subject: undefined,
-    message: undefined,
-    snacks: undefined
-  };
+  const getCheckedInputs = (nodeElements) => {
+    const array = [].slice.call(nodeElements);
 
-  const getRef = (name) => {
-    return function (el) {
-      inputs[name] = el
-    }
-  };
-
-  const getInputValue = (input) => input.value;
-
-  const getRadioValue = (element) => {
-    const checkedInput = element.querySelector('input:checked');
-
-    return checkedInput.value;
-  };
-
-  const getCheckboxValue = (element) => {
-    const checkedInputs = [].slice.call(element.querySelectorAll('input:checked'));
-
-    return (
-      checkedInputs && checkedInputs.length > 0 ?
-        checkedInputs.map(el => el.value) :
-        null
-    );
+    return array
+      .filter(el => el.checked)
+      .map(el => el.value);
   };
 
   const submitForm = (event) => {
     event.preventDefault();
 
+    const elements = event.target.elements;
+    const {salutation, name, email, subject, message, snacks} = elements;
+
     const data = {
-      salutation: getRadioValue(inputs.salutation),
-      name: getInputValue(inputs.name),
-      email: getInputValue(inputs.email),
-      subject: getInputValue(inputs.subject),
-      message: getInputValue(inputs.message),
-      snacks: getCheckboxValue(inputs.snacks)
+      salutation: salutation.value,
+      name: name.value,
+      email: email.value,
+      subject: subject.value,
+      message: message.value,
+      snacks: getCheckedInputs(snacks),
     };
 
     onSubmit(JSON.stringify(data));
   };
+
+  const {salutation, name, subject, message, email, snacks} = data;
 
   return (
     <form className="content__form contact-form" onSubmit={submitForm}>
@@ -88,15 +68,15 @@ const FeedbackForm = ({data, onSubmit}) => {
         <p>Чем мы можем помочь?</p>
       </div>
 
-      <SalutationList elementRef={getRef('salutation')} types={SALUTION_TYPES} defaultSalutation={salutation}/>
-      <Name elementRef={getRef('name')} name={name}/>
-      <Email elementRef={getRef('email')} email={email}/>
-      <Subject elementRef={getRef('subject')} subjectList={SUBJECT_LIST} defaultSubject={subject}/>
-      <Message elementRef={getRef('message')} defaultMessage={message}/>
-      <Snacks elementRef={getRef('snacks')} snackList={SNACK_LIST} defaultSnacks={snacks}/>
+      <SalutationList types={SALUTION_TYPES} defaultSalutation={salutation}/>
+      <Name value={name}/>
+      <Email value={email}/>
+      <Subject subjectList={SUBJECT_LIST} defaultSubject={subject}/>
+      <Message defaultMessage={message}/>
+      <Snacks snackList={SNACK_LIST} defaultSnacks={snacks}/>
 
       <button className="contact-form__button" type="submit">Отправить сообщение!</button>
       <output id="result"/>
     </form>
-  )
+  );
 };

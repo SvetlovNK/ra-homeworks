@@ -86,6 +86,14 @@ h1, h2 {
   padding: 0.5rem 1rem;
 }
 
+.contact-form__input-wrapper {
+  margin-right: 1rem;
+}
+
+.contact-form__input-wrapper:last-child {
+  margin-right: 0;
+}
+
 .contact-form__input-group--row {
   display: flex;
 }

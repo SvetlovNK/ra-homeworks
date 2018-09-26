@@ -1,11 +1,13 @@
 const Message = ({elementRef, defaultMessage}) => {
-  const labelName = 'Ваше сообщение';
-  const props = {
-    id: 'message',
-    name: 'message',
-    value: defaultMessage,
-    elementRef,
-    labelName,
-  };
-  return <Textarea {...props}/>
+  return (
+    <div className="contact-form__input-group">
+      <label className="contact-form__label" htmlFor="message">Ваше сообщение</label>
+      <textarea className="contact-form__input contact-form__input--text"
+                id="message"
+                name="message"
+                defaultValue={defaultMessage}
+                rows="6"
+                cols="65"/>
+    </div>
+  );
 };
