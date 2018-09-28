@@ -18,8 +18,6 @@ class App extends React.Component {
   filterBooks = (query) => {
     this.setState({query, books: []});
 
-    console.log(query);
-
     BookApi.query(query).then(books => {
       this.setState({books})
     });
