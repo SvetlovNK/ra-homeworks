@@ -63,10 +63,6 @@ label {
 }
 
 .form--subscribe .form-next {
-    opacity: .2;
-}
-
-.form--subscribe .form-next {
     position: absolute;
     top: 0;
     right: 0;
@@ -79,7 +75,7 @@ label {
     vertical-align: middle;
     cursor: pointer;
     border: none;
-    opacity: 0;
+    opacity: 1;
     transition: opacity .3s, transform .3s;
     background-color: transparent;
 }
@@ -128,6 +124,10 @@ i {
 
 .form--subscribe.is-error .form-error {
     opacity: 1;
+}
+
+.form--subscribe.is-error .form-next {
+    opacity: 0;
 }
 
 .form--subscribe.is-error .form-control:focus {
