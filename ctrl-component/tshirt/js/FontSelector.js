@@ -1,7 +1,9 @@
-const FontSelector = ({fonts, selectedFont, onSelect}) => {
+const FontSelector = ({fonts, ...rest}) => {
   return (
     <div className="font-picker">
-      Выберите шрифт
+      {fonts.map(font => {
+        return <FontSelectItem {...rest} font={font}/>
+      })}
     </div>
-  )
+  );
 };

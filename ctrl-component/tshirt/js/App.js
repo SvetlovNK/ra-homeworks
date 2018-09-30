@@ -37,9 +37,11 @@ class App extends React.Component {
           <FontSelector fonts={this.state.fonts} onSelect={this.selectFont}
                         selected={this.state.selectedFont}/>
         </div>
+
         {this.state.selectedFont
         && <TextRenderLine value={this.state.text} onChange={this.setText}/>
         }
+
         {this.state.text && (
           <div className="render-result">
             {this.renderLines()}
