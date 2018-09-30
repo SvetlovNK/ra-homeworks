@@ -20,7 +20,6 @@ class App extends React.Component {
   onSubmit(e) {
     e.preventDefault();
 
-    console.log(this.state);
     alert('Профиль зарегистрирован');
   }
 
