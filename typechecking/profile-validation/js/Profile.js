@@ -27,3 +27,18 @@ const Profile = props => {
     </div>
   );
 };
+
+const chainableISODatePropType = createChainableTypeChecker(ISODatePropType);
+const chainableurlVKPropType = createChainableTypeChecker(urlVKPropType);
+
+Profile.propTypes = {
+  first_name: PropTypes.string.isRequired,
+  last_name: PropTypes.string.isRequired,
+  url: chainableurlVKPropType.isRequired,
+  img: PropTypes.string,
+  birthday: chainableISODatePropType.isRequired,
+};
+
+Profile.defaultProps = {
+  img: './images/profile.jpg',
+};

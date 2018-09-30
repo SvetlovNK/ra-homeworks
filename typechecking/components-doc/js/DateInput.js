@@ -1,6 +1,6 @@
 'use strict';
 
-const chanableISODatePropType = createChainableTypeChecker(ISODatePropType);
+const chainableISODatePropType = createChainableTypeChecker(ISODatePropType);
 
 const DateInput = props => {
   return (
@@ -17,7 +17,7 @@ DateInput.propTypes = {
 
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  value: chanableISODatePropType.isRequired,
+  value: chainableISODatePropType.isRequired,
   required: PropTypes.bool,
 };
 
