@@ -1,4 +1,13 @@
-class Cart extends React.Component {
+class Cart extends React.PureComponent {
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const {isOpen} = nextProps;
+    const isCurrentlyOpened = this.props.isOpen;
+
+    if (isCurrentlyOpened !== isOpen || isOpen) {
+      return true;
+    }
+  }
 
   render() {
     return (
