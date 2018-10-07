@@ -3,9 +3,7 @@ const ReaderView = ({ toNextPage, toPrevPage, currentPageNumber, totalPages, pag
     <section className="col-sm-12 col-md-2 col-lg-2">
       <button className="button" onClick={toNextPage}>назад</button>
 
-      <div className="progress-container">
-        <ProgressBar total={totalPages} completed={currentPageNumber} />
-      </div>
+      <ProgressBar total={totalPages} completed={currentPageNumber} />
 
       <button className="button" onClick={toPrevPage}>вперед</button>
     </section>
