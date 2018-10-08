@@ -1,16 +1,21 @@
 'use strict';
 
+console.log(WithHighlight);
+
+const VideoWithHighLight = WithHighlight(Video);
+const ArticleWithHighLight = WithHighlight(Article);
+
 const List = props => {
   return props.list.map(item => {
     switch (item.type) {
       case 'video':
         return (
-          <Video {...item} />
+          <VideoWithHighLight {...item} />
         );
 
       case 'article':
         return (
-          <Article {...item} />
+          <ArticleWithHighLight {...item} />
         );
     }
   });
