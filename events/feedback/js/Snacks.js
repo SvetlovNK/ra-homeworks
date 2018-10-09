@@ -11,7 +11,7 @@ const Snacks = ({snackList = [], defaultSnacks = []}) => {
                    name="snacks"
                    type="checkbox"
                    value={value}
-                   defaultChecked={defaultSnacks.some(item => item === value)}/>
+                   defaultChecked={defaultSnacks.includes(value)}/>
             <label className="contact-form__label contact-form__label--radio" htmlFor={id}>{text}</label>
           </span>
         );
