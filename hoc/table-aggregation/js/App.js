@@ -1,5 +1,15 @@
 'use strict';
 
+const agregateByMonth = agregateByDate('month', {month: 'long'});
+const agregateByYear = agregateByDate('year', {year: 'numeric'});
+
+const MonthTableWithDateSort = WithDateSort(MonthTable, sortByMonth);
+const MonthTableWithAgregate = WithAgregate(MonthTableWithDateSort, agregateByMonth);
+
+// const YearTableWithAgregate = WithAgregate(YearTable, agregateByYear);
+// const YearTableWithDateSort = WithDateSort(YearTable);
+// const SortTableWithDateSort = WithDateSort(SortTable);
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -17,9 +27,9 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        <MonthTable list={this.state.list}/>
-        <YearTable list={this.state.list}/>
-        <SortTable list={this.state.list}/>
+        <MonthTableWithAgregate list={this.state.list}/>
+        {/*<YearTableWithAgregate list={this.state.list}/>*/}
+        {/*<SortTableWithDateSort list={this.state.list}/>*/}
       </div>
     );
   }
