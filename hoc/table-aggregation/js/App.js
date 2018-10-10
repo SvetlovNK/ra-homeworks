@@ -1,14 +1,22 @@
 'use strict';
 
-const agregateByMonth = agregateByDate('month', {month: 'long'});
-const agregateByYear = agregateByDate('year', {year: 'numeric'});
+const aggregateByMonth = aggregateByDate('month', {month: 'long'});
+const aggregateByYear = aggregateByDate('year', {year: 'numeric'});
 
-const MonthTableWithDateSort = WithDateSort(MonthTable, sortByMonth);
-const MonthTableWithAgregate = WithAgregate(MonthTableWithDateSort, agregateByMonth);
+const ComposedMonthTable = Redux.compose(
+  WithAgregate(aggregateByMonth),
+  WithSort(sortByMonth),
+  WithShortMonth()
+)(MonthTable);
 
-// const YearTableWithAgregate = WithAgregate(YearTable, agregateByYear);
-// const YearTableWithDateSort = WithDateSort(YearTable);
-// const SortTableWithDateSort = WithDateSort(SortTable);
+const ComposedYearTable = Redux.compose(
+  WithAgregate(aggregateByYear),
+  WithSort(sortObjectsListByNumber)
+)(YearTable);
+
+const ComposedSortTable = Redux.compose(
+  WithSort(sortByDate)
+)(SortTable);
 
 class App extends React.Component {
   constructor(props) {
@@ -27,10 +35,10 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        <MonthTableWithAgregate list={this.state.list}/>
-        {/*<YearTableWithAgregate list={this.state.list}/>*/}
-        {/*<SortTableWithDateSort list={this.state.list}/>*/}
+        <ComposedMonthTable list={this.state.list}/>
+        <ComposedYearTable list={this.state.list}/>
+        <ComposedSortTable list={this.state.list}/>
       </div>
     );
   }
-};
+}
