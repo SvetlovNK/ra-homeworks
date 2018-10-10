@@ -1,8 +1,7 @@
 'use strict';
 
 const SortTable = props => {
-
-  // console.log('SortTable', props);
+  const {list} = props;
 
   return (
     <div>
@@ -12,8 +11,8 @@ const SortTable = props => {
           <th>Date</th>
           <th>Amount</th>
         </tr>
-        {props.list.map(item => (
-          <tr>
+        {list.map((item, index) => (
+          <tr key={index}>
             <td>{item.date}</td>
             <td>{item.amount}</td>
           </tr>

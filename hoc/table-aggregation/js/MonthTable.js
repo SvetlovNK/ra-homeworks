@@ -1,8 +1,7 @@
 'use strict';
 
 const MonthTable = props => {
-
-  // console.log('MonthTable', props);
+  const {list} = props;
 
   return (
     <div>
@@ -12,8 +11,8 @@ const MonthTable = props => {
           <th>Month</th>
           <th>Amount</th>
         </tr>
-        {props.list.map(item => (
-          <tr>
+        {list.map(item => (
+          <tr key={item.month}>
             <td>{item.month}</td>
             <td>{item.amount}</td>
           </tr>
