@@ -1,8 +1,7 @@
 'use strict';
 
 const YearTable = props => {
-
-  console.log('YearTable', props);
+  const {list} = props;
 
   return (
     <div>
@@ -12,8 +11,8 @@ const YearTable = props => {
           <th>Year</th>
           <th>Amount</th>
         </tr>
-        {props.list.map(item => (
-          <tr>
+        {list.map(item => (
+          <tr key={item.year}>
             <td>{item.year}</td>
             <td>{item.amount}</td>
           </tr>
