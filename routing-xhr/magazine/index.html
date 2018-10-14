@@ -38,16 +38,16 @@
 <script type="text/babel">
   const ReactRouter = window.ReactRouterDOM;
   const Router = ReactRouter.HashRouter;
-  const BrowserRouter = ReactRouter.BrowserRouter;
+  const HashRouter = ReactRouter.HashRouter;
   const Route = ReactRouter.Route;
   const NavLink = ReactRouter.NavLink;
   const Link = ReactRouter.Link;
   const Switch = ReactRouter.Switch;
 
   ReactDOM.render(
-    <BrowserRouter>
+    <HashRouter>
       <App/>
-    </BrowserRouter>,
+    </HashRouter>,
     document.getElementById('root')
   );
 </script>

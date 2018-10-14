@@ -4,7 +4,7 @@ const Article = props => (
     <div className="card-body">
       <h5 className="card-title">{props.title}</h5>
       <p className="card-text">{props.description}</p>
-      <Link to={`/routing-xhr/magazine/article?id=${props.id}`} className="btn btn-primary">Подробнее</Link>
+      <Link to={`/article?id=${props.id}`} className="btn btn-primary">Подробнее</Link>
     </div>
   </div>
 );

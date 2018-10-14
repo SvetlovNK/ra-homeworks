@@ -1,6 +1,7 @@
 class ArticlePage extends React.Component {
   render() {
-    const article = articles.find(a => a.id === parseInt(window.location.search.split('=')[1], 10));
+    const {location} = this.props;
+    const article = articles.find(a => a.id === parseInt(location.search.split('=')[1], 10));
 
     return (
       <article className="container m-5">

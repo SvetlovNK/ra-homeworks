@@ -14,7 +14,7 @@ class HomePage extends React.Component {
                 <img className="card-img-top" src={`https://picsum.photos/800/180}`} alt="Подписка"/>
                 <div className="card-body">
                   <p className="card-text">Уникальная возможность — подписаться на издание!</p>
-                  <Link to="/routing-xhr/magazine/subscribtion" className="btn btn-primary">Подписаться</Link>
+                  <Link to="/subscribtion" className="btn btn-primary">Подписаться</Link>
                 </div>
               </div>
             </div>

@@ -3,9 +3,9 @@ const App = () => {
     <div>
       <Nav/>
       <Switch>
-        <Route exact path='/routing-xhr/magazine/index.html' component={HomePage}/>
-        <Route exact path='/routing-xhr/magazine/article' component={ArticlePage}/>
-        <Route exact path='/routing-xhr/magazine/subscribtion' component={SubscribtionPage}/>
+        <Route exact path='/' component={HomePage}/>
+        <Route exact path='/article' component={ArticlePage}/>
+        <Route exact path='/subscribtion' component={SubscribtionPage}/>
       </Switch>
     </div>
   )
