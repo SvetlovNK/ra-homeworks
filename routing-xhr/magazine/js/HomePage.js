@@ -1,9 +1,4 @@
 class HomePage extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(props.match);
-  }
-
   render() {
     return (
       <div>
