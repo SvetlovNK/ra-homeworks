@@ -15,12 +15,12 @@ class Story extends React.Component {
     this.fetchContent(nextProps);
   }
 
-  fetchContent({ match }) {
+  fetchContent({match}) {
     const fetchCount = parseInt(match.params.id, 10) ** 2;
 
     fetch(`https://baconipsum.com/api/?type=meat-and-filler&paras=${fetchCount}`)
       .then(response => response.json())
-      .then(content => this.setState({ content }));
+      .then(content => this.setState({content}));
   }
 
   render() {
@@ -28,7 +28,7 @@ class Story extends React.Component {
       <div className="container mt-5">
         <h1>Рассказ №{this.props.match.params.id}</h1>
 
-        {this.state.content.map(text => <p key={text}>{text}</p>)}  
+        {this.state.content.map(text => <p key={text}>{text}</p>)}
       </div>
     );
   }

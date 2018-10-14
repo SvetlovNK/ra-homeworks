@@ -3,15 +3,15 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Header />
+          <Header/>
           <Switch>
             <Route exact path="/">
-              <Homepage />
+              <Homepage/>
             </Route>
-            <Route path="/article/:id" component={Story} />
+            <Route path="/article/:id" component={Story}/>
           </Switch>
         </div>
       </Router>
     );
   }
-};
+}
