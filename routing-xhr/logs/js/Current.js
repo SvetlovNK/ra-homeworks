@@ -1,4 +1,4 @@
-const Current = ({ logs }) => (
+const Current = ({logs}) => (
   <div className="container">
     {logs
       .filter(log => log.length < 300)

@@ -1,4 +1,4 @@
-const Archive = ({ logs }) => (
+const Archive = ({logs}) => (
   <div className="container">
     {logs
       .filter(log => log.length >= 300)
