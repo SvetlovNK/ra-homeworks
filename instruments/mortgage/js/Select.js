@@ -6,5 +6,5 @@ const Autocomplete = () => (
       <option>Готовая квартира</option>
       <option>Загородный дом</option>
     </select>
-   </div>
+  </div>
 );
