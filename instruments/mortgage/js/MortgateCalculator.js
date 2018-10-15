@@ -1,9 +1,11 @@
-const MortgateCalculator = () => (
-  <div>
-    <form action="">
-      <Autocomplete/>
-      <Inputs/>
-      <Button/>
-    </form>
-  </div>
-);
+const MortgateCalculator = () => {
+  return (
+    <div className="form-wrapper">
+      <form className="form" action="">
+        <Autocomplete/>
+        <Inputs/>
+        <Submit/>
+      </form>
+    </div>
+  )
+};
