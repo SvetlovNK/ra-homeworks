@@ -21,13 +21,15 @@ class Form extends React.Component {
   }
 
   handleForm() {
-    const {name, text} = this.state;
-    console.log({
-      name,
-      text
-    });
+    setTimeout(() => {
+      const {name, text} = this.state;
+      console.log({
+        name,
+        text
+      });
 
-    this.setState({done: false})
+      this.setState({done: false})
+    }, 1000);
   }
 
   handleNameChange(e) {
