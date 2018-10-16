@@ -1,6 +1,6 @@
 const App = () => (
   <div>
-    <Header />
-    <Form />
+    <Header/>
+    <Form/>
   </div>
 );

@@ -15,30 +15,30 @@ class Form extends React.Component {
 
   send() {
     this.setState(
-      { done: true },
+      {done: true},
       this.handleForm,
     )
   }
 
   handleForm() {
-    setTimeout(function() {
-      const { name, text } = this.state
+    setTimeout(function () {
+      const {name, text} = this.state
       console.log(name, text)
 
-      this.setState({ done: false })
+      this.setState({done: false})
     }, 1000)
   }
 
   handleNameChange(e) {
-    this.setState({ name: e.target.value })
+    this.setState({name: e.target.value})
   }
 
   handleTextChange(e) {
-    this.setState({ text: e.target.value })
+    this.setState({text: e.target.value})
   }
 
   render() {
-    const { done } = this.state
+    const {done} = this.state
 
     console.log(this.state)
 
@@ -52,7 +52,7 @@ class Form extends React.Component {
 
               <label>
                 Имя
-                <input className="input" onChange={this.handleNameChange} />
+                <input className="input" onChange={this.handleNameChange}/>
               </label>
 
               <label>
