@@ -1,8 +1,8 @@
 const {AutoComplete} = window.antd;
 const options = ['Квартира в новостройке', 'Готовая квартира', 'Загородный дом'];
 
-const Autocomplete = () => (
+const Autocomplete = ({onChange}) => (
   <div>
-    <AutoComplete dataSource={options} placeholder="Тип квартиры:"/>
+    <AutoComplete dataSource={options} onChange={onChange} placeholder="Тип квартиры:"/>
   </div>
 );
