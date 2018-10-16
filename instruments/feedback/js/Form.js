@@ -1,16 +1,16 @@
 class Form extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       name: '',
       text: '',
       done: false,
-    }
+    };
 
-    this.send = this.send.bind(this)
-    this.handleNameChange = this.handleNameChange.bind(this)
-    this.handleTextChange = this.handleTextChange.bind(this)
+    this.send = this.send.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleTextChange = this.handleTextChange.bind(this);
   }
 
   send() {
@@ -21,12 +21,13 @@ class Form extends React.Component {
   }
 
   handleForm() {
-    setTimeout(function () {
-      const {name, text} = this.state
-      console.log(name, text)
+    const {name, text} = this.state;
+    console.log({
+      name,
+      text
+    });
 
-      this.setState({done: false})
-    }, 1000)
+    this.setState({done: false})
   }
 
   handleNameChange(e) {
@@ -38,9 +39,7 @@ class Form extends React.Component {
   }
 
   render() {
-    const {done} = this.state
-
-    console.log(this.state)
+    const {done} = this.state;
 
     return (
       <main className="container">
@@ -57,7 +56,7 @@ class Form extends React.Component {
 
               <label>
                 Сообщение
-                <textarea className="input" onChange={this.handleTextChange}></textarea>
+                <textarea className="input" onChange={this.handleTextChange}/>
               </label>
 
               <button className={`form__send ${done && 'form__send-disabled'}`} onClick={this.send}>Отправить</button>
