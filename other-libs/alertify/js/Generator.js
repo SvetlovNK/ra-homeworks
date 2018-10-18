@@ -1,4 +1,4 @@
-class Site extends React.Component {
+class Generator extends React.Component {
 
   constructor(props) {
     super(props);
@@ -11,6 +11,7 @@ class Site extends React.Component {
   }
 
   componentDidMount() {
+    alertify.set({ delay: 5000 });
     this.generate();
   }
 
@@ -35,6 +36,8 @@ class Site extends React.Component {
   generate() {
     const newId = makeid(random(5, 43, false));
 
+    alertify.log(`Новый ID: ${newId.length} символов`);
+
     this.setState(prevState => ({
       ids: [...prevState.ids, newId],
     }));
@@ -50,7 +53,7 @@ const makeid = (length = 12) => {
   }
 
   return text;
-}
+};
 
 const random = (lower = 0, upper = 1, floating = true) => floating
   ? Math.min(lower + (Math.random() * (upper - lower)), upper)

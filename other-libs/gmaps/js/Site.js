@@ -22,7 +22,7 @@ class Site extends React.Component {
           <p>Будем рады видеть вас в одном из наших офисов</p>
         </header>
         <main className="map">
-          <Map points={this.state.offices} />
+          <Map points={this.state.offices}/>
         </main>
         <button className="button" onClick={this.getOffices}>Обновить местоположение офисов</button>
       </div>
@@ -32,7 +32,7 @@ class Site extends React.Component {
   getOffices() {
     this.setState({
       offices: new Array(random(1, 15, false)).fill(0)
-        .map(() => ({ lon: random(-180, 180), lat: random(-90, 90) })),
+        .map(() => ({lon: random(-180, 180), lat: random(-90, 90)})),
     })
   }
 }
