@@ -4,12 +4,11 @@ class Cart extends React.PureComponent {
     const {isOpen} = nextProps;
     const isCurrentlyOpened = this.props.isOpen;
 
-    if (isCurrentlyOpened !== isOpen || isOpen) {
-      return true;
-    }
+    return isCurrentlyOpened !== isOpen || isOpen;
   }
 
   render() {
+    console.log('render');
     return (
       <CartView {...this.props} />
     );
