@@ -1,10 +1,7 @@
 const WithAgregate = (callback) => (Component) => {
-  const AgregateComponent = props => {
-    const {list} = props;
-    const aggregatedList = callback(list);
-
-    return <Component {...props} list={aggregatedList}/>
-  };
-
-  return AgregateComponent;
+  return class AgregateComponent extends React.Component {
+    render() {
+      return <Component {...this.props} list={callback(this.props.list)}/>
+    }
+  }
 };

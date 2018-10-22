@@ -1,16 +1,19 @@
-const WithShortMonth = () => (Component) => {
-  const ShortMonthComponent = props => {
-    const {list} = props;
-    const prependedList = list.map(({month, ...spread}) => {
-      const shortMonth = month.substr(0, 3).toUpperCase();
-      return {
-        month: shortMonth,
-        ...spread
-      }
-    });
+const WithShortMonth = (Component) => {
+  return class ShortMonthComponent extends React.Component {
+    getShortedMonth = (list) => {
+      return list.map(({month, ...spread}) => {
+        if (!month) return;
 
-    return <Component {...props} list={prependedList}/>
+        const shortMonth = month.substr(0, 3).toUpperCase();
+        return {
+          month: shortMonth,
+          ...spread
+        }
+      });
+    };
+
+    render() {
+      return <Component {...this.props} list={this.getShortedMonth(this.props.list)}/>
+    };
   };
-
-  return ShortMonthComponent;
 };

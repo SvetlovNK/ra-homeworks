@@ -2,19 +2,20 @@
 
 const aggregateByMonth = aggregateByDate('month', {month: 'long'});
 const aggregateByYear = aggregateByDate('year', {year: 'numeric'});
+const compose = _.compose;
 
-const ComposedMonthTable = Redux.compose(
+const ComposedMonthTable = compose(
   WithAgregate(aggregateByMonth),
   WithSort(sortByMonth),
-  WithShortMonth()
+  WithShortMonth
 )(MonthTable);
 
-const ComposedYearTable = Redux.compose(
+const ComposedYearTable = compose(
   WithAgregate(aggregateByYear),
   WithSort(sortObjectsListByNumber)
 )(YearTable);
 
-const ComposedSortTable = Redux.compose(
+const ComposedSortTable = compose(
   WithSort(sortByDate)
 )(SortTable);
 
