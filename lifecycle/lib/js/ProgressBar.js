@@ -3,6 +3,7 @@ class ProgressBar extends React.Component {
     super(props);
 
     this.canvasRef = undefined;
+    this.getCanvasRef = node => this.canvasRef = node;
     this.progressLines = [
       {
         name: 'total',
@@ -16,8 +17,6 @@ class ProgressBar extends React.Component {
       }
     ];
   }
-
-  getCanvasRef = node => this.canvasRef = node;
 
   drawProgress = () => {
     const {total, completed} = this.props;
