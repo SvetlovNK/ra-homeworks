@@ -2,22 +2,20 @@
 
 const aggregateByMonth = aggregateByDate('month', {month: 'long'});
 const aggregateByYear = aggregateByDate('year', {year: 'numeric'});
-const compose = _.compose;
 
-const ComposedMonthTable = compose(
-  WithAgregate(aggregateByMonth),
-  WithSort(sortByMonth),
-  WithShortMonth
-)(MonthTable);
+const GroupedMonthTable = WithGroup(MonthTable, {
+  sortFunc: sortByMonth,
+  agregateFunc: aggregateByMonth,
+  isShortMonth: true
+});
 
-const ComposedYearTable = compose(
-  WithAgregate(aggregateByYear),
-  WithSort(sortObjectsListByNumber)
-)(YearTable);
+const GroupedYearTable = WithGroup(YearTable, {
+  agregateFunc: aggregateByYear,
+});
 
-const ComposedSortTable = compose(
-  WithSort(sortByDate)
-)(SortTable);
+const GroupedSortTable = WithGroup(SortTable, {
+  sortFunc: sortByDate,
+});
 
 class App extends React.Component {
   constructor(props) {
@@ -36,9 +34,9 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        <ComposedMonthTable list={this.state.list}/>
-        <ComposedYearTable list={this.state.list}/>
-        <ComposedSortTable list={this.state.list}/>
+        <GroupedMonthTable list={this.state.list}/>
+        <GroupedYearTable list={this.state.list}/>
+        <GroupedSortTable list={this.state.list}/>
       </div>
     );
   }
