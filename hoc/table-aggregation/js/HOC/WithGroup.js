@@ -7,24 +7,23 @@ const WithGroup = (Component, settings) => {
     constructor(props) {
       super(props);
 
+      const {list} = props;
       const {sortFunc, agregateFunc, isShortMonth = false} = settings;
+
       this.sortFunct = sortFunc && sortFunc.bind(this);
       this.agregateFunc = agregateFunc && agregateFunc.bind(this);
       this.isShortMonth = isShortMonth;
 
-      this.updateData();
+      this.updateData(list);
     }
 
     componentWillReceiveProps(nextProps) {
       const {list} = nextProps;
-      this.setState({list}, this.updateData);
+      this.updateData(list);
     }
 
-    updateData = () => {
-      const {list} = this.state;
+    updateData = (list) => {
       let updatedList = [];
-
-      console.log(list);
 
       updatedList = this.sortList(list);
       updatedList = this.agregateList(updatedList);
@@ -62,7 +61,6 @@ const WithGroup = (Component, settings) => {
 
     render() {
       const {list} = this.state;
-      console.log('render');
 
       return (
         <Component {...this.props} list={list}/>
