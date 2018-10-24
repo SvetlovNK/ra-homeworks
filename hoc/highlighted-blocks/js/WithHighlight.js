@@ -1,21 +1,21 @@
-const WithHighlight = (Component) => (props) => {
-  const {views} = props;
+const WithHighlight = (Component) => {
+  return class HighlightComponent extends React.Component {
+    render() {
+      const {views} = this.props;
 
-  if (views < 100) {
-    return (
-      <New>
-        <Component {...props}/>
-      </New>
-    )
-  }
+      if (views < 100) return (
+        <New>
+          <Component {...this.props}/>
+        </New>
+      );
 
-  if (views > 1000) {
-    return (
-      <Popular>
-        <Component {...props}/>
-      </Popular>
-    )
-  }
+      if (views > 1000) return (
+        <Popular>
+          <Component {...this.props}/>
+        </Popular>
+      );
 
-  return <Component {...props}/>;
+      return <Component {...this.props}/>;
+    }
+  };
 };
