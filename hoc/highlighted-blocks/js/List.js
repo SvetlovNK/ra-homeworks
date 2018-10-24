@@ -1,7 +1,5 @@
 'use strict';
 
-console.log(WithHighlight);
-
 const VideoWithHighLight = WithHighlight(Video);
 const ArticleWithHighLight = WithHighlight(Article);
 
